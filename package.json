@@ -31,7 +31,7 @@
     "haikunator": "^2.1.1",
     "html-entities": "^1.2.1",
     "jira-client": "^6.8.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "node-fetch": "^1.7.3",
     "promise-throttle": "^0.3.1",
     "request": "^2.88.0",
