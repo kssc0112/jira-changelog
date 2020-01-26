@@ -93,36 +93,8 @@ module.exports = {
   // The template that generates the output, as an ejs template.
   // Learn more: http://ejs.co/
   template:
-`<% if (jira.releaseVersions && jira.releaseVersions.length) {  %>
-Release version: <%= jira.releaseVersions[0].name -%>
-<% jira.releaseVersions.forEach((release) => { %>
-  * <%= release.projectKey %>: <%= jira.baseUrl + '/projects/' + release.projectKey + '/versions/' + release.id -%>
-<% }); -%>
-<% } %>
-
-Jira Tickets
----------------------
-<% tickets.all.forEach((ticket) => { %>
-  * <<%= ticket.fields.issuetype.name %>> - <%- ticket.fields.summary %>
-    [<%= ticket.key %>]<%= jira.baseUrl + '/browse/' + ticket.key %>
-<% }); -%>
-<% if (!tickets.all.length) {%> ~ None ~ <% } %>
-
-Other Commits
----------------------
-<% commits.noTickets.forEach((commit) => { %>
-  * <%= commit.slackUser ? '@'+commit.slackUser.name : commit.authorName %> - <<%= commit.revision.substr(0, 7) %>> - <%= commit.summary -%>
-<% }); -%>
-<% if (!commits.noTickets.length) {%> ~ None ~ <% } %>
-
-Pending Approval
----------------------
-<% tickets.pendingByOwner.forEach((owner) => { %>
-<%= (owner.slackUser) ? '@'+owner.slackUser.name : owner.email %>
-<% owner.tickets.forEach((ticket) => { -%>
-  * <%= jira.baseUrl + '/browse/' + ticket.key %>
-<% }); -%>
-<% }); -%>
-<% if (!tickets.pendingByOwner.length) {%> ~ None. Yay! ~ <% } %>
-`
+`<% tickets.all.forEach((ticket) => {%>
+  * [<%= ticket.key %>]<%= '(' + jira.baseUrl + '/browse/' + ticket.key + '): ' %><%- ticket.fields.summary -%>
+  <% }); -%>
+  <% if (!tickets.all.length) {%> ~ None ~ <% } %>`
 };
