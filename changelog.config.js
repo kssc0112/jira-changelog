@@ -104,7 +104,7 @@ Jira Tickets
 ---------------------
 <% tickets.all.forEach((ticket) => { %>
   * <<%= ticket.fields.issuetype.name %>> - <%- ticket.fields.summary %>
-    [<%= ticket.key %>] <%= jira.baseUrl + '/browse/' + ticket.key %>
+    [<%= ticket.key %>]<%= jira.baseUrl + '/browse/' + ticket.key %>
 <% }); -%>
 <% if (!tickets.all.length) {%> ~ None ~ <% } %>
 
