@@ -23,7 +23,7 @@ module.exports = {
 
     // Regex used to match the issue ticket key
     // Use capture group one to isolate the key text within surrounding characters (if needed).
-    ticketIDPattern: /\[([A-Z]+\-[0-9]+)\]/i,
+    ticketIDPattern: /([A-Z]+\-[0-9]+)/i,
 
     // Status names that mean the ticket is approved.
     approvalStatus: ['Done', 'Closed', 'Accepted'],
